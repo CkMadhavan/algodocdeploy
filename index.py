@@ -2,7 +2,7 @@ from firebase import firebase
 from flask import Flask , render_template
 import os
 
-firebase_project_url = os.environ('FirebaseProjectUrl')
+firebase_project_url = os.environ.get('FirebaseProjectUrl')
 
 firebase_app = firebase.FirebaseApplication(firebase_project_url, None)
 app = Flask(__name__)
