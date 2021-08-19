@@ -1,7 +1,10 @@
 from firebase import firebase
 from flask import Flask , render_template
+import os
 
-firebase_app = firebase.FirebaseApplication('https://algodoc-d9ccc-default-rtdb.firebaseio.com/', None)
+firebase_project_url = os.environ('FirebaseProjectUrl')
+
+firebase_app = firebase.FirebaseApplication(firebase_project_url, None)
 app = Flask(__name__)
 
 @app.route('/favicon.ico')
