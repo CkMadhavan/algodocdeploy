@@ -19,6 +19,7 @@ def index():
 @app.route('/<something>')
 def other(something):
     result = firebase_app.get('/AlgoDocURL', None) + '/' + something
+    print(result)
     return render_template('hello.html' , algourl = result)
 
 if __name__ == '__main__':
