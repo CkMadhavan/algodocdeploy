@@ -17,9 +17,10 @@ def index():
 
     result = firebase_app.get('/AlgoDocURL', None)
 
-    print(requests.get(result).text)
-
-    return render_template('hello.html' , algourl = result)
+    if requests.get(result).text.contains('.ngrok.io not found'):
+        return 'The server is currently under maintenance , please try again later . We are sorry for the inconvenience caused'
+    else:
+        return render_template('hello.html' , algourl = result)
 
 @app.route('/<something>')
 def other(something):
