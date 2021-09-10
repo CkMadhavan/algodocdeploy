@@ -1,6 +1,7 @@
 from firebase import firebase
 from flask import Flask , render_template
 import os
+import urllib
 
 firebase_project_url = os.environ.get('FirebaseProjectUrl')
 
@@ -13,12 +14,18 @@ def favicon():
 
 @app.route('/')
 def index():
+
     result = firebase_app.get('/AlgoDocURL', None)
+
+    f = urllib.urlopen(result)
+    myfile = f.read()
+    print(myfile)
+
     return render_template('hello.html' , algourl = result)
 
 @app.route('/<something>')
 def other(something):
-    result = result = firebase_app.get('/AlgoDocURL', None) + '/' + something
+    result = firebase_app.get('/AlgoDocURL', None) + '/' + something
     return render_template('hello.html' , algourl = result)
 
 if __name__ == '__main__':
