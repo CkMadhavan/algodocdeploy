@@ -1,7 +1,7 @@
 from firebase import firebase
-from flask import Flask , render_template
+from flask import Flask , render_template , send
 import os
-import urllib
+import requests
 
 firebase_project_url = os.environ.get('FirebaseProjectUrl')
 
@@ -17,9 +17,7 @@ def index():
 
     result = firebase_app.get('/AlgoDocURL', None)
 
-    f = urllib.urlopen(result)
-    myfile = f.read()
-    print(myfile)
+    print(requests.get(result).text)
 
     return render_template('hello.html' , algourl = result)
 
