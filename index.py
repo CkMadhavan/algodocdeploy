@@ -17,9 +17,9 @@ def index():
 
     result = firebase_app.get('/AlgoDocURL', None)
 
-    abcd = requests.get(oriurl).text
+    abcd = requests.get(result).text
     
-    if '.ngrok.io not found' in abcd or 'Failed to complete tunnel connection' in abcd:
+    if ('.ngrok.io not found') in abcd or ('Failed to complete tunnel connection' in abcd):
         return render_template('undermaintenance.html')
     else:
         return render_template('hello.html' , algourl = result)
@@ -32,7 +32,7 @@ def other(something):
     
     abcd = requests.get(oriurl).text
     
-    if '.ngrok.io not found' in abcd or 'Failed to complete tunnel connection' in abcd:
+    if ('.ngrok.io not found' in abcd) or ('Failed to complete tunnel connection' in abcd):
         return render_template('undermaintenance.html')
     else:
         return render_template('hello.html' , algourl = result)
