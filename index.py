@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 @app.errorhandler(404)
 def not_found(e):
-    return 'hehe boi'
+    return render_template('filenotfound.html')
 
 @app.route('/favicon.ico')
 def favicon():
