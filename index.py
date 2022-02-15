@@ -26,8 +26,7 @@ def index():
     if ('.ngrok.io not found') in abcd or ('Failed to complete tunnel connection' in abcd):
         return render_template('undermaintenance.html')
     else:
-        return render_template('undermaintenance.html')
-        #return render_template('hello.html' , algourl = result)
+        return render_template('hello.html' , algourl = result)
 
 @app.route('/<something>')
 def other(something):
