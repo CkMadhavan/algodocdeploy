@@ -1,4 +1,4 @@
 flask
-git+git://github.com/CkMadhavan/python-firebase/
+git+https://github.com/CkMadhavan/python-firebase.git
 gunicorn
 requests
