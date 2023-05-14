@@ -16,6 +16,7 @@ def not_found(e):
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),  'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
+'''
 @app.route('/')
 def index():
 
@@ -53,6 +54,31 @@ def otherv(some):
         return render_template('undermaintenance.html')
     else:
         return render_template('hello.html' , algourl = result) 
+        
+'''
+
+@app.route('/')
+def index():
+
+    result = firebase_app.get('/AlgoDocURL', None)
+
+    return render_template('hello.html' , algourl = result)
+
+@app.route('/<something>')
+def other(something):
+
+    oriurl = firebase_app.get('/AlgoDocURL', None)
+    result = oriurl + '/' + something
+    
+    return render_template('hello.html' , algourl = result)
+    
+@app.route('/v/<some>')
+def otherv(some):
+
+    oriurl = firebase_app.get('/AlgoDocURL', None)
+    result = oriurl + '/v/' + some
+    
+    return render_template('hello.html' , algourl = result) 
 
 if __name__ == '__main__':
     app.run()
